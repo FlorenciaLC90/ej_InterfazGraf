@@ -5,6 +5,8 @@
  */
 package ej_interfazgraf;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Florencia
@@ -43,8 +45,18 @@ public class SUMADOR extends javax.swing.JFrame {
 
         jbLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setText("limpiar");
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpiarActionPerformed(evt);
+            }
+        });
 
         jbSumar.setText("sumar");
+        jbSumar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSumarActionPerformed(evt);
+            }
+        });
 
         jlRto.setBackground(new java.awt.Color(0, 102, 102));
         jlRto.setForeground(new java.awt.Color(51, 51, 51));
@@ -56,11 +68,11 @@ public class SUMADOR extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(71, 71, 71)
                 .addComponent(jbSumar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbLimpiar)
-                .addGap(68, 68, 68))
+                .addGap(69, 69, 69))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(133, 133, 133)
                 .addComponent(jlRto, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -69,11 +81,10 @@ public class SUMADOR extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jbLimpiar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jbSumar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbSumar)
+                    .addComponent(jbLimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jlRto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -152,6 +163,27 @@ public class SUMADOR extends javax.swing.JFrame {
     private void jtNro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNro2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtNro2ActionPerformed
+
+    private void jbSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSumarActionPerformed
+        try {
+            int num1 = Integer.parseInt(jtNro1.getText());
+            int num2 = Integer.parseInt(jtNro2.getText());
+            int rto = num1 + num2;
+            jlRto.setText(rto+"");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un numero entero");
+            jtNro1.setText("");
+            jtNro2.setText("");
+            jlRto.setText("Resultado");
+        }
+        
+    }//GEN-LAST:event_jbSumarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        jtNro1.setText("");
+        jtNro2.setText("");
+        jlRto.setText("Resultado");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
